@@ -141,7 +141,7 @@ module Locomotive
       end
 
       # proxy drops
-      assigns.merge!(Locomotive.config.context_assign_extensions)
+      assigns.merge!(Locomotive.config.context_assign_extensions).merge!(global_assigns)
 
       # process data from the session
       assigns.merge!(self.locomotive_flash_assigns)
