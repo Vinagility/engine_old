@@ -134,6 +134,12 @@ module Locomotive
     def locomotive_context(other_assigns = {})
       assigns = self.locomotive_default_assigns
 
+      global_assigns = Locomotive.config.context_global_drop.inject({}) do |h, v|
+        drop = ('@' + v).to_sym
+        h[v] = self.instance_variable_get(drop)
+        h
+      end
+
       # proxy drops
       assigns.merge!(Locomotive.config.context_assign_extensions)
 
