@@ -50,7 +50,7 @@ module Locomotive
         # Take all the routes and build the set of RESTFUL resources
         #
         def parse
-          routes = Rails.application.routes.routes.each do |route|
+          routes = ::Rails.application.routes.routes.each do |route|
             next unless route.path.spec.to_s =~ %r{^/locomotive/api/}
 
             name        = route.defaults[:controller].split('/').last
