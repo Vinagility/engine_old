@@ -85,7 +85,7 @@ module Locomotive
           end
 
           def clear_cache_for_all_domains
-            self.domains.each { |name| Rails.cache.delete(name) }
+            self.domains.each { |name| ::Rails.cache.delete(name) }
           end
 
         end
